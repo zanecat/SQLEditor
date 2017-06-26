@@ -1,0 +1,13 @@
+{
+    "name": "LighteningEditor",
+    "version": "0.0.1",
+    "dependencies": {
+        "monaco-editor" : "latest",
+        "jquery" : "latest",
+        "typescript": "latest",
+        "vue" : "latest",
+        "webpack": "latest",
+        "webpack-dev-middleware": "latest",
+        "webpack-hot-middleware": "latest"
+    }
+}
