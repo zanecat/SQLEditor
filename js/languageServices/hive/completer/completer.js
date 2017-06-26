@@ -6,7 +6,7 @@ importScripts("../parser/sqlFunctions.js");
 var Completer = (function () {
     function Completer(parser) {
         this.parser = parser;
-        sql.parseSql("s", "", "hive", false);
+        this.output = sql.parseSql("s", "", "hive", false);
     }
     return Completer;
 }());
