@@ -7,7 +7,8 @@
         "baseUrl": ".",
         "paths": {
             "editor":["./js/vs/editor/"]
-        }
+        },
+        "allowJs": true
     },
     "exclude": [
         "node_modules"
