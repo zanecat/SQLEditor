@@ -8,10 +8,18 @@ Vue.directive('editor', {
                 value: snippet.statement,
                 language: 'sql'
             });
+
             snippet.editor = editor;
+
             editor.onKeyUp(function(){
                 binding.value.snippet.statement = editor.getValue();
             });
+
+            monaco.languages.register({ id: 'hive' });
+            var hiveCompletionProvider = new HiveCompletionProvider();
+            monaco.languages.registerCompletionItemProvider('hive', {
+                provideCompletionItems : hiveProvider.getProvider()
+            })
         });
     }
 })

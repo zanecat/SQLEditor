@@ -2,7 +2,12 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "sourceMap": true
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "editor":["./js/vs/editor/"]
+        }
     },
     "exclude": [
         "node_modules"
