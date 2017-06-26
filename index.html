@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
+    <script src="js/vs/loader.js"></script>
+    <script src="js/vue.viewModel.js"></script>
+    <script src="js/vue.binding.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <div id="content">
+        <div id="editor" v-editor="{snippet: snippet}" style="height:400px; width:100%"></div>
+        <div>{{snippet.statement}}</div>
+    </div>
+    <script>
+        $(document).ready(new Vue({
+            el: '#content',
+            data: {
+                snippet : new Snippet()
+            }
+        }));
+    </script>
+</body>
+</html>
