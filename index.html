@@ -18,24 +18,15 @@
     <div id="content">
         <div id="editor" v-editor="{snippet: snippet}" style="height:400px; width:100%"></div>
         <div>{{snippet.statement}}</div>
-        <button id="mybtn">dian wo</button>
     </div>
     <script> 
         $(document).ready(function(){
-            
-
             var vm = new Vue({
                 el: '#content',
                 data: {
                     snippet : new Snippet()
                 }
             });
-
-            $("button").click(function(){
-                console.log("1");
-                $("#editor").css('height', '350px');
-            });
-
         });
     </script>
 </body>

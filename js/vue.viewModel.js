@@ -1,5 +1,5 @@
 var Snippet = function(){
     this.editor = null;
-    this.statement = "nothing";
+    this.statement = "";
     this.type = 'hive';
 }

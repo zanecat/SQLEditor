@@ -36,7 +36,7 @@ var HiveCompletionProvider = (function(){
                 var keywordSuggestions = $.map(parseResult.suggestKeywords, function (keyword) {
                     return {
                         label: keyword.value,
-                        kind: monaco.languages.CompletionItemKind.Function,
+                        kind: monaco.languages.CompletionItemKind.Keyword,
                         detail: "keyword",
                         insertText: keyword.value
                     };

@@ -16,7 +16,7 @@ Vue.directive('editor', {
             var editor = monaco.editor.create(el, {
                 value: snippet.statement,
                 language: 'hive',
-                wordBasedSuggestions : false,
+                wordBasedSuggestions: false,
                 snippetSuggestions: false
             });
 
