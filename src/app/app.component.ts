@@ -11,13 +11,13 @@ export class AppComponent {
     title = 'app';
 
     @ViewChild(MonacoEditorComponent)
-    private monacoEditor: MonacoEditorComponent;
+    private monaco: MonacoEditorComponent;
 
     constructor() {
 
     }
 
     onClick() {
-        console.log(this.monacoEditor.getValue());
+        window.alert(this.monaco.testParser());
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { SqlParser } from "../../assets/languageServices/hive/parser/sqlParser";
 
 declare const monaco: any;
 declare const require: any;
@@ -15,14 +16,14 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
     @ViewChild('editor')
     editorContent: ElementRef;
 
-    constructor() { }
+    constructor(private sqlParser: SqlParser) { }
 
     ngOnInit() { }
 
     ngAfterViewInit() {
         var onGotAmdLoader = () => {
             // Load monaco
-            (<any>window).require.config({ paths: { 'vs': '../assets/monaco-editor/min/vs' } });
+            (<any>window).require.config({ paths: { 'vs': 'assets/monaco-editor/min/vs' } });
             (<any>window).require(['vs/editor/editor.main'], () => {
                 this.initMonaco();
             });
@@ -32,7 +33,7 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
         if (!(<any>window).require) {
             var loaderScript = document.createElement('script');
             loaderScript.type = 'text/javascript';
-            loaderScript.src = '../assets/monaco-editor/min/vs/loader.js';
+            loaderScript.src = 'assets/monaco-editor/min/vs/loader.js';
             loaderScript.addEventListener('load', onGotAmdLoader);
             document.body.appendChild(loaderScript);
         } else {
@@ -42,12 +43,14 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
 
     // Will be called once monaco library is available
     initMonaco() {
-        var myDiv: HTMLDivElement = this.editorContent.nativeElement;
-        this.editor = monaco.editor.create(myDiv, {
+        var editorContainer: HTMLDivElement = this.editorContent.nativeElement;
+        this.editor = monaco.editor.create(editorContainer, {
+            theme: "vs-dark",
             value: [
                 '/**',
-                ' * Powered by Monaco Editor from Microsoft.',
-                '**/'
+                ' * Proudly Powered by Monaco Editor from Microsoft.',
+                ' */',
+                ''
             ].join('\n'),
             language: 'sql'
         });
@@ -55,6 +58,10 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
 
     getValue() {
         return this.editor.getValue();
+    }
+
+    testParser() {
+        console.log(this.sqlParser.parse(this.getValue()))
     }
 }
 
