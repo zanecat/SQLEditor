@@ -8,7 +8,7 @@
     <script src="js/vs/loader.js"></script>
     <script src="js/vue.viewModel.js"></script>
     <script src="js/vue.binding.js"></script>
-    <script src="main.js"></script>
+    <script src="js/languageServices/hive/completer/completer.js"></script>
 </head>
 <body>
     <div id="content">
@@ -16,12 +16,15 @@
         <div>{{snippet.statement}}</div>
     </div>
     <script>
+        
         $(document).ready(new Vue({
             el: '#content',
             data: {
                 snippet : new Snippet()
             }
         }));
+
+        console.log(Completer.output);
     </script>
 </body>
 </html>
