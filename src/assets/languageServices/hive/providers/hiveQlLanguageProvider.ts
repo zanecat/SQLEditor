@@ -4,9 +4,19 @@ export class HiveQlLanguageProvider {
     static ensureInitialized() {
         HiveQlCompleter.ensureInitialized();
     }
+
+    static getTextBeforeCursor(model, position): string {
+        return model.getValueInRange({
+            startLineNumber: 1,
+            startColumn: 1,
+            endLineNumber: position.lineNumber,
+            endColumn: position.column
+        });
+    }
+
     static provideCompletionItems(model, position) {
         HiveQlCompleter.ensureInitialized();
-        var textBeforeCursor = model.getValueInRange({ startLineNumber: 1, startColumn: 1, endLineNumber: position.lineNumber, endColumn: position.column });
+        var textBeforeCursor = HiveQlLanguageProvider.getTextBeforeCursor(model, position)
         var endLineNumber = model.getLineCount();
         var endColumn = model.getLineMaxColumn(endLineNumber);
         var textAfterCursor = model.getValueInRange({
