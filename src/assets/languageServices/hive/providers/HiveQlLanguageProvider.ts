@@ -14,23 +14,23 @@ export class HiveQlLanguageProvider {
         });
     }
 
-    static provideCompletionItems(model, position) {
-        HiveQlCompleter.ensureInitialized();
-        var textBeforeCursor = HiveQlLanguageProvider.getTextBeforeCursor(model, position)
+    static getTextAfterCursor(model, position): string {
         var endLineNumber = model.getLineCount();
         var endColumn = model.getLineMaxColumn(endLineNumber);
-        var textAfterCursor = model.getValueInRange({
+        return model.getValueInRange({
             startLineNumber: position.lineNumber,
             startColumn: position.column,
             endLineNumber: endLineNumber,
             endColumn: endColumn
         });
-        console.log(textBeforeCursor);
-        console.log(textAfterCursor);
+    }
+
+    static provideCompletionItems(model, position) {
+        HiveQlCompleter.ensureInitialized();
+        var textBeforeCursor = HiveQlLanguageProvider.getTextBeforeCursor(model, position);
+        var textAfterCursor = HiveQlLanguageProvider.getTextAfterCursor(model, position);
         var parseResult = HiveQlCompleter.getBasicCompletion(textBeforeCursor, textAfterCursor)
-        console.log(parseResult);
         var result = HiveQlLanguageProvider.handleBasicCompletion(parseResult);
-        console.log(result);
         return result;
     }
 
