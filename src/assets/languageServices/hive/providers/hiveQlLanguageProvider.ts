@@ -1,4 +1,4 @@
-import { HiveQlCompleter } from '../completers/hiveQlCompleter';
+import { HiveQlCompleter } from '../completers/HiveQlCompleter';
 
 export class HiveQlLanguageProvider {
     static ensureInitialized() {

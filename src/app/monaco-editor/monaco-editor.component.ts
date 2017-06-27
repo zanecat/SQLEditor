@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/hiveQlLanguageProvider';
+import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/HiveQlLanguageProvider';
 
-import { DomScriptLoader } from 'assets/lib/domScriptLoader';
+import { DomScriptLoader } from 'assets/lib/DomScriptLoader';
 
 declare const monaco: any;
 declare const require: any;

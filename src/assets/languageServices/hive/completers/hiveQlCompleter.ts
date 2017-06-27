@@ -1,4 +1,4 @@
-import { SqlParser } from "../parsers/sqlParser";
+import { SqlParser } from "../parsers/SqlParser";
 declare const require: any;
 
 export class HiveQlCompleter {
