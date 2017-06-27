@@ -23,6 +23,7 @@
         "@angular/router": "latest",
         "core-js": "latest",
         "jquery": "latest",
+        "monaco-editor": "latest",
         "rxjs": "latest",
         "zone.js": "latest"
     },
