@@ -5,26 +5,38 @@
     <title>Title</title>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
+    <script src="js/languageServices/hive/parser/sqlParseSupport.js"></script>
+    <script src="js/languageServices/hive/parser/sql.js"></script>
+    <script src="js/languageServices/hive/parser/sqlFunctions.js"></script>
+    <script src="js/languageServices/hive/providers/hiveCompletionProvider.js"></script>
     <script src="js/vs/loader.js"></script>
     <script src="js/vue.viewModel.js"></script>
     <script src="js/vue.binding.js"></script>
-    <script src="js/languageServices/hive/completer/completer.js"></script>
+    <!--<script src="js/languageServices/hive/completer/completer.js"></script>-->
 </head>
 <body>
     <div id="content">
         <div id="editor" v-editor="{snippet: snippet}" style="height:400px; width:100%"></div>
         <div>{{snippet.statement}}</div>
+        <button id="mybtn">dian wo</button>
     </div>
-    <script>
-        
-        $(document).ready(new Vue({
-            el: '#content',
-            data: {
-                snippet : new Snippet()
-            }
-        }));
+    <script> 
+        $(document).ready(function(){
+            
 
-        console.log(Completer.output);
+            var vm = new Vue({
+                el: '#content',
+                data: {
+                    snippet : new Snippet()
+                }
+            });
+
+            $("button").click(function(){
+                console.log("1");
+                $("#editor").css('height', '350px');
+            });
+
+        });
     </script>
 </body>
 </html>
