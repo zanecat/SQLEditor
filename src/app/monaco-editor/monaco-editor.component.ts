@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { SqlParser } from "../../assets/languageServices/hive/parser/sqlParser";
+import { SqlParser } from '../../assets/languageServices/hive/parser/sqlParser';
+
+import { DomScriptLoader } from 'assets/lib/domScriptLoader';
 
 declare const monaco: any;
 declare const require: any;
@@ -31,11 +33,12 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
 
         // Load AMD loader if necessary
         if (!(<any>window).require) {
-            var loaderScript = document.createElement('script');
-            loaderScript.type = 'text/javascript';
-            loaderScript.src = 'assets/monaco-editor/min/vs/loader.js';
-            loaderScript.addEventListener('load', onGotAmdLoader);
-            document.body.appendChild(loaderScript);
+            // var loaderScript = document.createElement('script');
+            // loaderScript.type = 'text/javascript';
+            // loaderScript.src = 'assets/monaco-editor/min/vs/loader.js';
+            // loaderScript.addEventListener('load', onGotAmdLoader);
+            // document.body.appendChild(loaderScript);
+            DomScriptLoader.addScript('assets/monaco-editor/min/vs/loader.js', 'monaco_amd_loader', onGotAmdLoader);
         } else {
             onGotAmdLoader();
         }
@@ -61,7 +64,9 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
     }
 
     testParser() {
-        console.log(this.sqlParser.parse(this.getValue()))
+        var result = this.sqlParser.parse(this.getValue());
+        console.log(result);
+        return result;
     }
 }
 
