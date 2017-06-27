@@ -12,10 +12,6 @@ export class SqlParser {
         DomScriptLoader.addScript('assets/languageServices/hive/parser/sqlStatementsParser.js', "sql_parse_statements_script", null);
     }
 
-    onInit() {
-
-    }
-
     parse(text: string) {
         return sql.parseSql(text, "", "hive", false);
     }
