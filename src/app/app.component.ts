@@ -16,8 +16,4 @@ export class AppComponent {
     constructor() {
 
     }
-
-    onClick() {
-        window.alert(this.monaco.testParser());
-    }
 }

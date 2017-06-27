@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { SqlParser } from '../../assets/languageServices/hive/parser/sqlParser';
+import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/hiveQlLanguageProvider';
 
 import { DomScriptLoader } from 'assets/lib/domScriptLoader';
 
@@ -18,7 +18,7 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
     @ViewChild('editor')
     editorContent: ElementRef;
 
-    constructor(private sqlParser: SqlParser) { }
+    constructor() { }
 
     ngOnInit() { }
 
@@ -33,11 +33,6 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
 
         // Load AMD loader if necessary
         if (!(<any>window).require) {
-            // var loaderScript = document.createElement('script');
-            // loaderScript.type = 'text/javascript';
-            // loaderScript.src = 'assets/monaco-editor/min/vs/loader.js';
-            // loaderScript.addEventListener('load', onGotAmdLoader);
-            // document.body.appendChild(loaderScript);
             DomScriptLoader.addScript('assets/monaco-editor/min/vs/loader.js', 'monaco_amd_loader', onGotAmdLoader);
         } else {
             onGotAmdLoader();
@@ -46,7 +41,11 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
 
     // Will be called once monaco library is available
     initMonaco() {
+        HiveQlLanguageProvider.ensureInitialized();
         var editorContainer: HTMLDivElement = this.editorContent.nativeElement;
+        monaco.languages.registerCompletionItemProvider('sql', {
+            provideCompletionItems: HiveQlLanguageProvider.provideCompletionItems
+        });
         this.editor = monaco.editor.create(editorContainer, {
             theme: "vs-dark",
             value: [
@@ -61,12 +60,6 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
 
     getValue() {
         return this.editor.getValue();
-    }
-
-    testParser() {
-        var result = this.sqlParser.parse(this.getValue());
-        console.log(result);
-        return result;
     }
 }
 
