@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MonacoEditorComponent } from './monaco-editor/monaco-editor.component';
-import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/HiveQlLanguageProvider';
 
 @NgModule({
     declarations: [
@@ -13,7 +12,7 @@ import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/H
     imports: [
         BrowserModule
     ],
-    providers: [HiveQlLanguageProvider],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
