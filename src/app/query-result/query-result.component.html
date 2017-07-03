@@ -1,0 +1,8 @@
+<table *ngIf="resultData" style="width:100%">
+  <tr>
+    <th *ngFor="let thead of resultData.colNames">{{thead}}</th>
+  </tr>
+  <tr *ngFor="let trow of resultData.rowData">
+    <td *ngFor="let cell of trow">{{cell}}</td>
+  </tr>
+</table>

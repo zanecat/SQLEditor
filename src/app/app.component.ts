@@ -1,6 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-
-import { MonacoEditorComponent } from "./monaco-editor/monaco-editor.component";
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -10,10 +8,5 @@ import { MonacoEditorComponent } from "./monaco-editor/monaco-editor.component";
 export class AppComponent {
     title = 'app';
 
-    @ViewChild(MonacoEditorComponent)
-    private monaco: MonacoEditorComponent;
-
-    constructor() {
-
-    }
+    constructor() {  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/HiveQlLanguageProvider';
+import { ApiService, ResultData } from '../api.service'
 
 import { DomScriptLoader } from 'assets/lib/DomScriptLoader';
 
@@ -9,16 +10,18 @@ declare const require: any;
 @Component({
     selector: 'app-monaco-editor',
     templateUrl: './monaco-editor.component.html',
-    styleUrls: ['./monaco-editor.component.css']
+    styleUrls: ['./monaco-editor.component.css'],
+    providers: [ApiService]
 })
 export class MonacoEditorComponent implements OnInit, AfterViewInit {
     title = 'app';
     editor;
+    private result;
 
     @ViewChild('editor')
     editorContent: ElementRef;
 
-    constructor() { }
+    constructor(private apiService : ApiService) { }
 
     ngOnInit() { }
 
@@ -47,10 +50,10 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
             provideCompletionItems: HiveQlLanguageProvider.provideCompletionItems
         });
         this.editor = monaco.editor.create(editorContainer, {
-            theme: "vs-dark",
+            theme: "vs",
             value: [
                 '/**',
-                ' * Proudly Powered by Monaco Editor from Microsoft.',
+                ' * Type your query here!',
                 ' */',
                 ''
             ].join('\n'),
@@ -58,7 +61,7 @@ export class MonacoEditorComponent implements OnInit, AfterViewInit {
         });
     }
 
-    getValue() {
+    getValue() : string {
         return this.editor.getValue();
     }
 }
