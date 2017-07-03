@@ -7,14 +7,16 @@ import { MonacoEditorComponent } from './monaco-editor/monaco-editor.component';
 import { EditorPanelComponent } from './editor-panel/editor-panel.component';
 import { QueryResultComponent } from './query-result/query-result.component';
 
-import {ApiService} from './api.service'
+import {ApiService} from './services/api.service';
+import { AssistPanelComponent } from './assist-panel/assist-panel.component'
 
 @NgModule({
     declarations: [
         AppComponent,
         MonacoEditorComponent,
         EditorPanelComponent,
-        QueryResultComponent
+        QueryResultComponent,
+        AssistPanelComponent
     ],
     imports: [
         BrowserModule,

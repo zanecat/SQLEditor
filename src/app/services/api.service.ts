@@ -27,7 +27,6 @@ export class ApiService{
 
     private extractData(res : Response): ResultData{
         let body = res.json() as ResultData;
-        console.log(body)
         return body;
     }
 
@@ -45,7 +44,7 @@ export class ApiService{
     }
 }
 
-export class ResultData{
-    heads : Array<string>
-    rows : Array<Array<string>>
+export interface ResultData{
+    colNames : Array<string>
+    rowData : Array<Array<string>>
 }

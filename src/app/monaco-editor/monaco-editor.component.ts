@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HiveQlLanguageProvider } from 'assets/languageServices/hive/providers/HiveQlLanguageProvider';
-import { ApiService, ResultData } from '../api.service'
+import { ApiService, ResultData } from '../services/api.service'
 
 import { DomScriptLoader } from 'assets/lib/DomScriptLoader';
 
@@ -10,8 +10,7 @@ declare const require: any;
 @Component({
     selector: 'app-monaco-editor',
     templateUrl: './monaco-editor.component.html',
-    styleUrls: ['./monaco-editor.component.css'],
-    providers: [ApiService]
+    styleUrls: ['./monaco-editor.component.css']
 })
 export class MonacoEditorComponent implements OnInit, AfterViewInit {
     title = 'app';

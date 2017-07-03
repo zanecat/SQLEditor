@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { ResultData } from "../api.service"
+import { ResultData } from "../services/api.service"
 
 @Component({
   selector: 'app-query-result',
@@ -7,8 +7,6 @@ import { ResultData } from "../api.service"
   styleUrls: ['./query-result.component.css']
 })
 export class QueryResultComponent implements OnInit {
-  result;
-
   constructor() { }
 
   ngOnInit() {

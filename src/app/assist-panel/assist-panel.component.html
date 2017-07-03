@@ -1,0 +1,10 @@
+<table *ngIf="tables" style="width:100%">
+  <tr>
+    <th>Table Name</th>
+    <th>Data Source</th>
+  </tr>
+  <tr *ngFor="let tab of tables">
+    <td>{{tab.name}}</td>
+    <td>{{tab.dataSource}}</td>
+  </tr>
+</table>

@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MonacoEditorComponent } from "../monaco-editor/monaco-editor.component";
 import { QueryResultComponent } from "../query-result/query-result.component"
-import { ApiService } from "../api.service"
+import { ApiService } from "../services/api.service"
 
 @Component({
   selector: 'app-editor-panel',
   templateUrl: './editor-panel.component.html',
-  styleUrls: ['./editor-panel.component.css'],
-  providers: [ApiService]
+  styleUrls: ['./editor-panel.component.css']
 })
 export class EditorPanelComponent implements OnInit {
 
