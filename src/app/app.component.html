@@ -1,8 +1,14 @@
 <div id="main-content">
-    <div id="assist-panel">
-        <app-assist-panel></app-assist-panel>
-    </div>
-    <div id="editor-panel">
-        <app-editor-panel>Loading App...</app-editor-panel>
-    </div>
+    <split direction="horizontal">
+        <split-area [size]="30" >
+            <div id="assist-panel">
+                <app-assist-panel></app-assist-panel>
+            </div>
+        </split-area>
+        <split-area [size]="70">
+            <div id="editor-panel">
+                <app-editor-panel>Loading App...</app-editor-panel>
+            </div>
+        </split-area>
+    </split>
 </div>

@@ -10,6 +10,8 @@ import { QueryResultComponent } from './query-result/query-result.component';
 import {ApiService} from './services/api.service';
 import { AssistPanelComponent } from './assist-panel/assist-panel.component'
 
+import { AngularSplitModule } from "angular-split";
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -20,7 +22,8 @@ import { AssistPanelComponent } from './assist-panel/assist-panel.component'
     ],
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        AngularSplitModule
     ],
     providers: [ApiService],
     bootstrap: [AppComponent]
